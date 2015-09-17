@@ -1,0 +1,1 @@
+Scripts on Groovy, Python and Ruby for testing standart os function, git functions and building.
