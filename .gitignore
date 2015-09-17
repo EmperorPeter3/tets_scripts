@@ -1,0 +1,6 @@
+#do not handle *.a
+#*.a
+#but handle lib.a
+#!lib.a
+#ignoring files in /build
+#/build
