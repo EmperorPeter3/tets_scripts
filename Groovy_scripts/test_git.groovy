@@ -137,7 +137,7 @@ def repo_dir = cwd + "/" + repo_name + "/";
 //Gitwork gw = new Gitwork();
 //gw.clone_repo(repo_dir, repo_url);
 //make_symlink ('symlink', repo_dir);
-//Builder bld = new Builder();
+Builder bld = new Builder();
 //bld.run_make_gcc();
 //bld.run_make_jvm();
 //bld.run_make_ant();

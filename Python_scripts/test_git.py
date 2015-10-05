@@ -100,6 +100,22 @@ class Main(object):
         finally:
             os.chdir(cwd)
 
+    def run_make_msbuild(self,src_dir,filename):
+        try:
+            subprocess.call(["C:/Users/RVjP46/AppData/Local/Programs/Common/Microsoft/Visual C++ for Python/9.0/vcvarsall.bat"], shell=True)
+            os.chdir(src_dir)
+            os.system('cl /EHsc ' + filename)
+        finally:
+            os.chdir(cwd)
+
+    def run_make_nmake(self,src_dir):
+        try:
+            subprocess.call(["C:/Users/RVjP46/AppData/Local/Programs/Common/Microsoft/Visual C++ for Python/9.0/vcvarsall.bat"], shell=True)
+            os.chdir(src_dir)
+            os.system('nmake')
+        finally:
+            os.chdir(cwd)
+
 #--------------------------Main class examples--------------------------
 repo_url = "https://github.com/EmperorPeter3/atc_console.git"
 repo_name = "atc_console"
@@ -110,11 +126,14 @@ git_check_dir = os.path.join(cwd,""+repo_name+"\.git")
 example = Main()
 #example.clone_repo(repo_dir, repo_url)
 #example.make_symlink("symlink","E:\\Scripts\\Python_scripts\\")
-example.upload_to_ftp(example.get_session("127.0.0.1","ftp","ftp"),'Readme_python.txt')
+#example.upload_to_ftp(example.get_session("127.0.0.1","ftp","ftp"),'Readme_python.txt')
 #-----building (UNIX only)-----
 #example.run_make_gcc("/home/rvjp46/Python_scripts/c_compile_src")
 #example.run_make_ant("/home/rvjp46/Python_scripts/ant_compile_src")
 #example.run_make_jvm("/home/rvjp46/Python_scripts/jvm_compile_src")
+#-----building (WIN only)------
+#example.run_make_msbuild(os.path.join("E:", os.sep, "Scripts","Python_scripts","msbuild_compile_src"),'basic.cpp')
+#example.run_make_nmake(os.path.join("E:", os.sep, "Scripts","Python_scripts","msbuild_compile_src"))
 #-----------------------------------------------------------------------
 
 #-----------------------Logger setup and examples-----------------------

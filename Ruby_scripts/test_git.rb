@@ -67,6 +67,20 @@ class Main
 		Dir.chdir($pwd)
 	end
 
+	def run_make_msbuild(src_dir,filename)
+		system('C:/Users/RVjP46/AppData/Local/Programs/Common/Microsoft/Visual C++ for Python/9.0/vcvarsall.bat')
+		Dir.chdir(src_dir)
+		exec "cl /EHsc #{filename}"
+		Dir.chdir($pwd)
+	end
+
+	def run_make_nmake(src_dir)
+		system('C:/Users/RVjP46/AppData/Local/Programs/Common/Microsoft/Visual C++ for Python/9.0/vcvarsall.bat')
+		Dir.chdir(src_dir)
+		puts `nmake`
+		Dir.chdir($pwd)
+	end
+
 	def upload_to_ftp (ftp_server,ftp_login,ftp_pass,filename)
 		puts 'Uploading to ftp: ' + ftp_server
 		txt_file_obj = File.new(filename)
@@ -119,4 +133,8 @@ example = Main.new()
 #example.run_make_gcc("/home/rvjp46/Ruby_scripts/c_compile_src")
 #example.run_make_jvm("/home/rvjp46/Ruby_scripts/jvm_compile_src")
 #example.run_make_ant("/home/rvjp46/Ruby_scripts/ant_compile_src")
-example.upload_to_ftp("127.0.0.1","ftp","ftp","Readme_ruby.txt")
+#Building (WIN only)
+#example.run_make_msbuild("E:/Scripts/Ruby_scripts/msbuild_compile_src/",'basic.cpp')
+#example.run_make_nmake("E:/Scripts/Ruby_scripts/msbuild_compile_src/")
+#FTP uploading
+#example.upload_to_ftp("127.0.0.1","ftp","ftp","Readme_ruby.txt")
